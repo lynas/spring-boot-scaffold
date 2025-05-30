@@ -31,7 +31,11 @@ class AppUserControllerIntegrationTest : BaseIntegrationTest() {
             id = UUID.randomUUID()
             name = UUID.randomUUID().toString()
         })
-        val response = mockMvc.get("${generateRequestUrl()}?pageNumber=0&pageSize=20")
+        appUserRepository.save(AppUser().apply {
+            id = UUID.randomUUID()
+            name = UUID.randomUUID().toString()
+        })
+        val response = mockMvc.get("${generateRequestUrl()}?pageNumber=0&pageSize=1")
             .andExpect { status { isOk() } }
             .andReturn()
             .response

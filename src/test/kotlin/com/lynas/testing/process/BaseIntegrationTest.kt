@@ -15,7 +15,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 class BaseIntegrationTest {
     lateinit var mockMvc: MockMvc
     @Autowired
-    protected lateinit var webApplicationContext: WebApplicationContext
+    private lateinit var webApplicationContext: WebApplicationContext
     @BeforeEach
     fun setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build()

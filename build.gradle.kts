@@ -43,6 +43,8 @@ dependencies {
 	testImplementation("org.testcontainers:postgresql")
 	testImplementation("org.testcontainers:rabbitmq")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	testImplementation("io.mockk:mockk:1.14.2")
 }
 
 kotlin {
