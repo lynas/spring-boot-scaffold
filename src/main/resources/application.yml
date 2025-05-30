@@ -1,0 +1,11 @@
+spring:
+  docker:
+    compose:
+      lifecycle-management: start_only
+  application:
+    name: testing-process
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:mydatabase}
+    username: ${POSTGRES_USERNAME:myuser}
+    password: ${POSTGRES_PASSWORD:secret}
