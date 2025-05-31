@@ -1,1 +1,1 @@
-rootProject.name = "testing-process"
+rootProject.name = "spring-boot-scaffold"

@@ -16,7 +16,10 @@ const val APP_USER_CONTROLLER_BASE_URL = "/users"
 class AppUserController(val appUserService: AppUserService) {
 
     @GetMapping("")
-    fun getAllUsers(@RequestParam pageNumber: Int?, @RequestParam pageSize: Int?): ResponseEntity<AllAppUserResponseDto> {
+    fun getAllUsers(
+        @RequestParam pageNumber: Int?,
+        @RequestParam pageSize: Int?,
+    ): ResponseEntity<AllAppUserResponseDto> {
         return ResponseEntity.ok().body(
             appUserService.getAllUsers(
                 PageRequest.of(

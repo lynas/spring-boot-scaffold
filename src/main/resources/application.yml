@@ -3,7 +3,7 @@ spring:
     compose:
       lifecycle-management: start_only
   application:
-    name: testing-process
+    name: spring-boot-scaffold
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:mydatabase}
