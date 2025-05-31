@@ -10,10 +10,14 @@
 - Virtual Thread
 - Redis (TODO)
 - RabbitMQ (TODO)
+- RestClient (TODO)
+- Resilience4j (TODO)
 
 ### Testing
 
+- Integration Test
 - MockMVC
+- Unit Test
 - Mockk
 - TestContainer
 - Dynamic API URL resolver
