@@ -45,7 +45,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	testImplementation("io.mockk:mockk:1.14.2")
-	testImplementation("com.tngtech.archunit:archunit-junit4:1.4.1")
+	testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
 }
 
 kotlin {
