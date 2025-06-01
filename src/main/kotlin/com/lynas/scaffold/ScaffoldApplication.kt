@@ -1,4 +1,4 @@
-package com.lynas.testing.process
+package com.lynas.scaffold
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

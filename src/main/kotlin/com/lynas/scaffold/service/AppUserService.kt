@@ -1,9 +1,9 @@
-package com.lynas.testing.process.service
+package com.lynas.scaffold.service
 
-import com.lynas.testing.process.dto.AllAppUserResponseDto
-import com.lynas.testing.process.dto.AppUserResponseDto
-import com.lynas.testing.process.dto.PageInfo
-import com.lynas.testing.process.repository.AppUserRepository
+import com.lynas.scaffold.dto.AllAppUserResponseDto
+import com.lynas.scaffold.dto.AppUserResponseDto
+import com.lynas.scaffold.dto.PageInfo
+import com.lynas.scaffold.repository.AppUserRepository
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 

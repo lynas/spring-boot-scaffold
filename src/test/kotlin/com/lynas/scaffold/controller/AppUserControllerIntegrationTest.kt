@@ -1,11 +1,11 @@
-package com.lynas.testing.process.controller
+package com.lynas.scaffold.controller
 
-import com.lynas.testing.process.BaseIntegrationTest
-import com.lynas.testing.process.dto.AllAppUserResponseDto
-import com.lynas.testing.process.entity.AppUser
-import com.lynas.testing.process.getRequestUrl
-import com.lynas.testing.process.repository.AppUserRepository
-import com.lynas.testing.process.toKObject
+import com.lynas.scaffold.BaseIntegrationTest
+import com.lynas.scaffold.dto.AllAppUserResponseDto
+import com.lynas.scaffold.entity.AppUser
+import com.lynas.scaffold.getRequestUrl
+import com.lynas.scaffold.repository.AppUserRepository
+import com.lynas.scaffold.toKObject
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

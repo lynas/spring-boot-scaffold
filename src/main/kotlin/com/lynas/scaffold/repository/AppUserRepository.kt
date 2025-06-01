@@ -1,6 +1,6 @@
-package com.lynas.testing.process.repository
+package com.lynas.scaffold.repository
 
-import com.lynas.testing.process.entity.AppUser
+import com.lynas.scaffold.entity.AppUser
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository

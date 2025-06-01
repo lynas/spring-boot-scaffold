@@ -1,4 +1,4 @@
-package com.lynas.testing.process.dto
+package com.lynas.scaffold.dto
 
 import java.util.UUID
 

@@ -1,7 +1,7 @@
-package com.lynas.testing.process.controller
+package com.lynas.scaffold.controller
 
-import com.lynas.testing.process.dto.AllAppUserResponseDto
-import com.lynas.testing.process.service.AppUserService
+import com.lynas.scaffold.dto.AllAppUserResponseDto
+import com.lynas.scaffold.service.AppUserService
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

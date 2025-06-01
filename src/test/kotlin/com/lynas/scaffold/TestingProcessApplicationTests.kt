@@ -1,4 +1,4 @@
-package com.lynas.testing.process
+package com.lynas.scaffold
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

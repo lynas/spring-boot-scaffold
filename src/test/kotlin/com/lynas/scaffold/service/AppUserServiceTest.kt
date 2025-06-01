@@ -1,8 +1,8 @@
-package com.lynas.testing.process.service
+package com.lynas.scaffold.service
 
-import com.lynas.testing.process.dto.AllAppUserResponseDto
-import com.lynas.testing.process.entity.AppUser
-import com.lynas.testing.process.repository.AppUserRepository
+import com.lynas.scaffold.dto.AllAppUserResponseDto
+import com.lynas.scaffold.entity.AppUser
+import com.lynas.scaffold.repository.AppUserRepository
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals

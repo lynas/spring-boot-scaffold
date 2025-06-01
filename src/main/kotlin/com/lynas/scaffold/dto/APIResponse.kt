@@ -1,4 +1,4 @@
-package com.lynas.testing.process.dto
+package com.lynas.scaffold.dto
 
 data class PageInfo(
     val pageNumber: Int,

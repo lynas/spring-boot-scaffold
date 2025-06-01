@@ -1,4 +1,4 @@
-package com.lynas.testing.process.entity
+package com.lynas.scaffold.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
