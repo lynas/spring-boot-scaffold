@@ -21,6 +21,8 @@ repositories {
 }
 
 extra["snippetsDir"] = file("build/generated-snippets")
+val mockkVersion = "1.14.2"
+val archunitJunit5Version = "1.4.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -44,8 +46,8 @@ dependencies {
 	testImplementation("org.testcontainers:rabbitmq")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-	testImplementation("io.mockk:mockk:1.14.2")
-	testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
+	testImplementation("io.mockk:mockk:$mockkVersion")
+	testImplementation("com.tngtech.archunit:archunit-junit5:$archunitJunit5Version")
 }
 
 kotlin {

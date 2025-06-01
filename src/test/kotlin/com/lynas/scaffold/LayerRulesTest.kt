@@ -4,20 +4,23 @@ import com.tngtech.archunit.core.domain.JavaClass
 import com.tngtech.archunit.core.importer.ImportOption
 import com.tngtech.archunit.junit.AnalyzeClasses
 import com.tngtech.archunit.junit.ArchTest
-import com.tngtech.archunit.lang.*
-import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.*
+import com.tngtech.archunit.lang.ArchCondition
+import com.tngtech.archunit.lang.ArchRule
+import com.tngtech.archunit.lang.ConditionEvents
+import com.tngtech.archunit.lang.SimpleConditionEvent
+import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes
 
 /**
- * Analyze your main code (adjust package root if needed).
+ * Analyze main code
  */
-@AnalyzeClasses(packages = ["com.lynas.scaffold"],  // <-- root of your prod code
+@AnalyzeClasses(packages = ["com.lynas.scaffold"],
     importOptions = [ImportOption.DoNotIncludeTests::class])
 class LayerRulesTest {
     /**
      * 1)  Service classes may access *one* repository class, and the name must match.
      */
     @ArchTest
-    val service_uses_only_its_own_repository: ArchRule =
+    val serviceUsesOnlyItsOwnRepository: ArchRule =
         classes().that().haveSimpleNameEndingWith("Service")
             .should(usesOnlyOwnRepository())
 
