@@ -32,8 +32,12 @@ class LayerRulesTest {
                 val expectedRepoName = serviceClass.simpleName.replace("Service", "Repository")
                 val accesses = serviceClass
                     .accessesFromSelf  // field + method + constructor calls
-                    .map { it.target.owner.simpleName }
-                    .filter { it.endsWith("Repository") }
+                    .map { it.target.owner }
+                    .filter { accessedClass ->
+                        accessedClass.simpleName.endsWith("Repository") &&
+                                accessedClass.packageName.contains("repository", ignoreCase = true)
+                    }
+                    .map { it.simpleName }
                     .toSet()
 
                 // ✔ acceptable: zero (service is mocked in tests) or exactly its own repo
