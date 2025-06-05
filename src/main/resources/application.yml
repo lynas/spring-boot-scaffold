@@ -4,6 +4,12 @@ spring:
       lifecycle-management: start_only
   application:
     name: spring-boot-scaffold
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: true # dev env only
+        show_sql: true # dev env only
+        format_sql: true # dev env only
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:mydatabase}
