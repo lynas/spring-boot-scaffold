@@ -47,7 +47,7 @@ class AppUserController(val appUserService: AppUserService) {
     }
 
     @PostMapping("")
-    fun addNewAppUser(@Valid @RequestBody requestBody: NewAppUserRequestDto): ResponseEntity<NewAppUserResponseDto> {
+    fun createNewAppUser(@Valid @RequestBody requestBody: NewAppUserRequestDto): ResponseEntity<NewAppUserResponseDto> {
         return ResponseEntity.status(HttpStatus.CREATED).body(appUserService.createANewUser(requestBody))
     }
 }

@@ -10,7 +10,6 @@ import com.lynas.scaffold.exception.AppUserNotFoundByIdException
 import com.lynas.scaffold.repository.AppUserRepository
 import jakarta.transaction.Transactional
 import org.springframework.data.domain.Pageable
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.util.UUID
 
