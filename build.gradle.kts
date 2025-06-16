@@ -35,6 +35,7 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("io.github.microutils:kotlin-logging:3.0.5")
 
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 

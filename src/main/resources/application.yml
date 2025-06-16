@@ -7,9 +7,9 @@ spring:
   jpa:
     properties:
       hibernate:
-        generate_statistics: true # dev env only
-        show_sql: true # dev env only
-        format_sql: true # dev env only
+#        generate_statistics: true # dev env only
+#        show_sql: true # dev env only
+#        format_sql: true # dev env only
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:mydatabase}
@@ -18,3 +18,10 @@ spring:
   threads:
     virtual:
       enabled: true
+app:
+  rest:
+    client:
+      github:
+        url: ${GITHUB_API_BASE_URL:https://api.github.com}
+        username: ${GITHUB_API_USER_NAME:demo}
+        password: ${GITHUB_API_PASSWORD:password}
