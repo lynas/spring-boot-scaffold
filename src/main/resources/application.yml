@@ -25,3 +25,22 @@ app:
         url: ${GITHUB_API_BASE_URL:https://api.github.com}
         username: ${GITHUB_API_USER_NAME:demo}
         password: ${GITHUB_API_PASSWORD:password}
+resilience4j:
+  circuitbreaker:
+    instances:
+      githubService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+  retry:
+    instances:
+      githubService:
+        maxAttempts: 3
+        waitDuration: 2s
+
+  timelimiter:
+    instances:
+      githubService:
+        timeoutDuration: 5s

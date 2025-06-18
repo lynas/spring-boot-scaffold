@@ -36,6 +36,10 @@ dependencies {
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("io.github.microutils:kotlin-logging:3.0.5")
+	implementation("io.github.resilience4j:resilience4j-annotations:2.3.0")
+	implementation("io.github.resilience4j:resilience4j-retry:2.3.0")
+	implementation("io.github.resilience4j:resilience4j-circuitbreaker:2.3.0")
+	implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
 
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
