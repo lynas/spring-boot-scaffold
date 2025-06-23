@@ -33,13 +33,11 @@ resilience4j:
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState: 10s
-
   retry:
     instances:
       githubService:
-        maxAttempts: 3
+        maxAttempts: 5
         waitDuration: 2s
-
   timelimiter:
     instances:
       githubService:

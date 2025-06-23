@@ -12,7 +12,7 @@ class CodeRepositoryService(
         codeRepositoryRepository.findAll()
     }
 
-    fun getByUserId(userId: UUID): Object? {
+    fun getByUserId(userId: UUID): Any? {
         throw RuntimeException()
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestClient
 class RestClientProvider(
     private val githubRestClientProperties: GithubRestClientProperties
 ) {
-    val timeoutMillis = 5000L
+//    val timeoutMillis = 5000L
 
 
     @Bean
@@ -28,12 +28,12 @@ class RestClientProvider(
                     githubRestClientProperties.password
                 )
             }
-            .requestFactory(httpComponentsClientHttpRequestFactory())
+//            .requestFactory(httpComponentsClientHttpRequestFactory())
             .requestInterceptor(RestClientLoggingInterceptor(logger))
             .build()
     }
 
-    fun httpComponentsClientHttpRequestFactory(): HttpComponentsClientHttpRequestFactory {
+/*    fun httpComponentsClientHttpRequestFactory(): HttpComponentsClientHttpRequestFactory {
         val requestConfig = RequestConfig.custom()
             .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeoutMillis))
             .setResponseTimeout(Timeout.ofMilliseconds(timeoutMillis))
@@ -47,7 +47,7 @@ class RestClientProvider(
         requestFactory.httpClient = httpClient
 
         return requestFactory
-    }
+    }*/
 }
 
 private val logger = KotlinLogging.logger {}

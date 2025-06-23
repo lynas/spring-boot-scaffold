@@ -23,6 +23,8 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 val mockkVersion = "1.14.2"
 val archunitJunit5Version = "1.4.1"
+val resilience4jVersion = "2.3.0"
+val wireMockVersion = "3.10.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -36,9 +38,14 @@ dependencies {
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("io.github.microutils:kotlin-logging:3.0.5")
-	implementation("io.github.resilience4j:resilience4j-annotations:2.3.0")
-	implementation("io.github.resilience4j:resilience4j-retry:2.3.0")
-	implementation("io.github.resilience4j:resilience4j-circuitbreaker:2.3.0")
+
+	implementation("io.github.resilience4j:resilience4j-spring-boot3:${resilience4jVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-aop")
+
+//	implementation("io.github.resilience4j:resilience4j-annotations:$resilience4jVersion")
+//	implementation("io.github.resilience4j:resilience4j-retry:$resilience4jVersion")
+//	implementation("io.github.resilience4j:resilience4j-circuitbreaker:$resilience4jVersion")
+
 	implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
 
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
@@ -57,6 +64,10 @@ dependencies {
 
 	testImplementation("io.mockk:mockk:$mockkVersion")
 	testImplementation("com.tngtech.archunit:archunit-junit5:$archunitJunit5Version")
+	testImplementation("io.github.resilience4j:resilience4j-test:$resilience4jVersion")
+	testImplementation("org.wiremock.integrations:wiremock-spring-boot:$wireMockVersion")
+
+
 }
 
 kotlin {

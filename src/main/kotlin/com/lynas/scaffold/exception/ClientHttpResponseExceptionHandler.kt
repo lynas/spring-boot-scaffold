@@ -19,9 +19,9 @@ object ClientHttpResponseExceptionHandler {
             throw APICallException(status.value(), message)
         }
 
-        if (status.is5xxServerError) {
-            throw APICallException(status.value(), "Internal Server Error")
-        }
+//        if (status.is5xxServerError) {
+//            throw APICallException(status.value(), "Internal Server Error")
+//        }
 
         return true
     }

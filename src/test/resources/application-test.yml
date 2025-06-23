@@ -1,0 +1,18 @@
+# Set @ActiveProfile("test") to use this config
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      githubService:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 10
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 10s
+#  retry:
+#    instances:
+#      githubService:
+#        maxAttempts: 5
+#        waitDuration: 2s
+#  timelimiter:
+#    instances:
+#      githubService:
+#        timeoutDuration: 5s

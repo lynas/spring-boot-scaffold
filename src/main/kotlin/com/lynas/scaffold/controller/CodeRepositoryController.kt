@@ -17,7 +17,7 @@ class CodeRepositoryController(val codeRepositoryService: CodeRepositoryService)
     @GetMapping("/{userId}")
     fun getRepositoryByUserId(
         @PathVariable userId: UUID,
-    ): ResponseEntity<Object> {
+    ): ResponseEntity<Any> {
         return ResponseEntity.ok().body(
                 codeRepositoryService.getByUserId(userId)
         )

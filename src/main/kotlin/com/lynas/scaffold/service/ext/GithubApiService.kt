@@ -3,6 +3,7 @@ package com.lynas.scaffold.service.ext
 import com.lynas.scaffold.exception.ClientHttpResponseExceptionHandler
 import mu.KotlinLogging
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter
 import io.github.resilience4j.retry.annotation.Retry
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter
 import org.springframework.stereotype.Service
@@ -14,9 +15,12 @@ class GithubApiService(
 ): ExtRestApiService {
     private val logger = KotlinLogging.logger {}
 
-    @CircuitBreaker(name = "githubService", fallbackMethod = "fallback")
-    @Retry(name = "githubService")
-    @TimeLimiter(name = "githubService")
+//    @CircuitBreaker(
+//        name = GITHUB_SERVICE_INSTANCE,
+//        fallbackMethod = "fallback"
+//    )
+    @Retry(name = GITHUB_SERVICE_INSTANCE)
+//    @TimeLimiter(name = GITHUB_SERVICE_INSTANCE, fallbackMethod = "fallback")
     override fun <T> get(
         url: String,
         queryParams: Map<String, String>,
@@ -27,16 +31,21 @@ class GithubApiService(
         return restClient.get()
             .uri(uri)
             .retrieve()
-            .onStatus(ClientHttpResponseExceptionHandler::handleException)
+//            .onStatus(ClientHttpResponseExceptionHandler::handleException)
+//            .onStatus { it.statusCode.is5xxServerError }
             .body(responseType)
             ?: throw IllegalStateException("Empty response body from $uri")
     }
 
-
-    fun fallback(ex: Throwable): String {
-        logger.error("Fallback triggered due to: ${ex.message}")
-        // todo configure
-        return "default-response"
+    fun <T> fallback(
+        url: String,
+        queryParams: Map<String, String>,
+        responseType: Class<T>,
+        ex: Throwable
+    ): T {
+        logger.error(ex) { "Fallback triggered for $url due to: ${ex.message}" }
+        @Suppress("UNCHECKED_CAST")
+        return "default response" as T
     }
 }
 
@@ -45,5 +54,5 @@ fun formatQueryParams(queryParams: Map<String, String>): String {
     val joinedParams = queryParams.entries.joinToString("&") { "${it.key}=${it.value}" }
     return "?q=$joinedParams"
 }
-
+const val GITHUB_SERVICE_INSTANCE = "githubService"
 //https://api.github.com/search/repositories?q=language:java created:>2024-05-05&per_page=2
