@@ -24,7 +24,7 @@ class GithubExtApiController(
                 url = "/search/repositories",
                 queryParams = mapOf("language" to language),
                 responseType = GithubRepositoryApiResponseDto::class.java
-            )
+            ).get()
         )
     }
 }

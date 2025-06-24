@@ -1,40 +1,39 @@
 package com.lynas.scaffold.service.ext
 
-import com.lynas.scaffold.exception.ClientHttpResponseExceptionHandler
-import mu.KotlinLogging
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter
 import io.github.resilience4j.retry.annotation.Retry
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClient
+import java.util.concurrent.CompletableFuture
 
 @Service
 class GithubApiService(
     val restClient: RestClient,
-): ExtRestApiService {
+) : ExtRestApiService {
     private val logger = KotlinLogging.logger {}
 
-//    @CircuitBreaker(
-//        name = GITHUB_SERVICE_INSTANCE,
-//        fallbackMethod = "fallback"
-//    )
+        @CircuitBreaker(
+        name = GITHUB_SERVICE_INSTANCE,
+//        fallbackMethod = "fallback" // TODO fallback does not work with test, investigate
+    )
     @Retry(name = GITHUB_SERVICE_INSTANCE)
-//    @TimeLimiter(name = GITHUB_SERVICE_INSTANCE, fallbackMethod = "fallback")
+    @TimeLimiter(name = GITHUB_SERVICE_INSTANCE)
     override fun <T> get(
         url: String,
         queryParams: Map<String, String>,
         responseType: Class<T>
-    ): T {
+    ): CompletableFuture<T> {
         val uri = "$url${formatQueryParams(queryParams)}"
-        logger.info { uri }
-        return restClient.get()
-            .uri(uri)
-            .retrieve()
-//            .onStatus(ClientHttpResponseExceptionHandler::handleException)
-//            .onStatus { it.statusCode.is5xxServerError }
-            .body(responseType)
-            ?: throw IllegalStateException("Empty response body from $uri")
+        return CompletableFuture.supplyAsync {
+            logger.info { uri }
+            restClient.get()
+                .uri(uri)
+                .retrieve()
+                .body(responseType)
+                ?: throw IllegalStateException("Empty response body from $uri")
+        }
     }
 
     fun <T> fallback(
@@ -42,10 +41,10 @@ class GithubApiService(
         queryParams: Map<String, String>,
         responseType: Class<T>,
         ex: Throwable
-    ): T {
+    ): CompletableFuture<T> {
         logger.error(ex) { "Fallback triggered for $url due to: ${ex.message}" }
         @Suppress("UNCHECKED_CAST")
-        return "default response" as T
+        return CompletableFuture.completedFuture("default response" as T)
     }
 }
 
@@ -54,5 +53,6 @@ fun formatQueryParams(queryParams: Map<String, String>): String {
     val joinedParams = queryParams.entries.joinToString("&") { "${it.key}=${it.value}" }
     return "?q=$joinedParams"
 }
+
 const val GITHUB_SERVICE_INSTANCE = "githubService"
 //https://api.github.com/search/repositories?q=language:java created:>2024-05-05&per_page=2
