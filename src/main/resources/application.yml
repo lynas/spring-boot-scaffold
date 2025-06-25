@@ -35,7 +35,6 @@ resilience4j:
   circuitbreaker:
     instances:
       githubService:
-        slidingWindowSize: 10 # Failure rate is calculated over these 10 calls
         minimumNumberOfCalls: 5 # Minimum number of calls required before calculating failure rate. Prevents the circuit breaker from opening too early with too little data
         failureRateThreshold: 100 # Percentage of failures (out of successful + failed calls) that will open the circuit. 100 means if all calls fail, circuit will open.
         waitDurationInOpenState: 5s # How long the circuit breaker stays open before transitioning to half-open. During this period, no calls are allowed (short-circuited).

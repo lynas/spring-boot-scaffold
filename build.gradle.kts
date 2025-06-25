@@ -42,12 +42,6 @@ dependencies {
 	implementation("io.github.resilience4j:resilience4j-spring-boot3:${resilience4jVersion}")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
 
-//	implementation("io.github.resilience4j:resilience4j-annotations:$resilience4jVersion")
-//	implementation("io.github.resilience4j:resilience4j-retry:$resilience4jVersion")
-//	implementation("io.github.resilience4j:resilience4j-circuitbreaker:$resilience4jVersion")
-
-	implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
-
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
 	runtimeOnly("org.postgresql:postgresql")

@@ -14,7 +14,7 @@ class GithubApiService(
 ) : ExtRestApiService {
     private val logger = KotlinLogging.logger {}
 
-        @CircuitBreaker(
+    @CircuitBreaker(
         name = GITHUB_SERVICE_INSTANCE,
 //        fallbackMethod = "fallback" // TODO fallback does not work with test, investigate
     )
